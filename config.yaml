@@ -30,7 +30,7 @@ static_resources:
                   cluster: envoy-eks
                   max_grpc_timeout: 0s
                   request_mirror_policies:
-                    cluster: envoy-eks
+                    cluster: eks-envoy-proxy
                     runtime_fraction: { default_value: { numerator: 100 } }
               cors:
                 allow_origin_string_match:
@@ -49,7 +49,7 @@ static_resources:
     connect_timeout: 2s
     type: STATIC
     dns_lookup_family: V4_ONLY
-    lb_policy: random
+    lb_policy: ROUND_ROBIN
     load_assignment:
       cluster_name: envoy-eks
       endpoints:
@@ -58,9 +58,20 @@ static_resources:
             address:
               socket_address: 
                 protocol: TCP
-                address: EKS-NODE IP Address
+                address: EKS-NODE IP
                 port_value: 30156
-              socket_address:
+  - name: eks-envoy-proxy
+    connect_timeout: 2s
+    type: STATIC
+    dns_lookup_family: V4_ONLY
+    lb_policy: ROUND_ROBIN
+    load_assignment:
+      cluster_name: eks-envoy-proxy
+      endpoints:
+      - lb_endpoints:
+        - endpoint:
+            address:
+              socket_address: 
                 protocol: TCP
-                address: EKS-NODE IP Address
-                port_value: 30119
+                address: EKS-NODE IP
+                port_value: 30183
