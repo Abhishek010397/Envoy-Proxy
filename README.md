@@ -13,3 +13,8 @@ Create two EKS Clusters(Blue-Green)
 7. To run envoy configuration file use:-
 
                   envoy -c /path/to/your-configuration.yaml file
+
+
+For More Information Look into
+   
+   https://www.envoyproxy.io/docs/envoy/latest/api-v3/api
