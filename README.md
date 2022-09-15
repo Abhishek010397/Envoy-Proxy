@@ -12,4 +12,4 @@ Create two EKS Clusters(Blue-Green)
 6. Create the Envoy Configuration file(yaml format).
 7. To run envoy configuration file use:-
 
-                       envoy -c /path/to/your-configuration.yaml file
+                  envoy -c /path/to/your-configuration.yaml file
