@@ -1,4 +1,3 @@
-
 static_resources:
   listeners:
   - name: listener_0
@@ -31,7 +30,9 @@ static_resources:
                   max_grpc_timeout: 0s
                   request_mirror_policies:
                     cluster: eks-envoy-proxy
-                    runtime_fraction: { default_value: { numerator: 100 } }
+                    runtime_fraction:
+                      default_value:
+                        numerator: 100
               cors:
                 allow_origin_string_match:
                 - prefix: "*"
